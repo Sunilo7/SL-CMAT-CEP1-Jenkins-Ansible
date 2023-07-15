@@ -1,3 +1,3 @@
-[webserver]
-172.31.18.62 ansible_user=ansiuser
-172.31.30.152  ansible_user=ansiuser
+[Buildserver]
+172.31.14.63 ansible_user=labsuser
+172.31.4.126 ansible_user=labsuser
