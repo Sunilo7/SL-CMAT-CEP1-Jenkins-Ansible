@@ -1,4 +1,5 @@
-- hosts: webserver
+---
+- hosts: Buildserver
   become: true
   tasks:
   - name: Clone git repo
