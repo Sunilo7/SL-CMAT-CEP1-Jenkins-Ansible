@@ -61,7 +61,7 @@ Save it.
 Playbook to install mavena nd docker on worker node:
 
 ---
-- hosts: webserver
+- hosts: Buildserver
   become: true
   tasks:
   - name: update apt-get repo
@@ -75,7 +75,7 @@ Playbook to install mavena nd docker on worker node:
 
 Playbook to Deploy
 
-- hosts: webserver
+- hosts: Buildserver
   become: true
   tasks:
   - name: Clone git repo
