@@ -11,7 +11,7 @@ pipeline{
         stage('run playbook1')
         {
             steps{
-                ansiblePlaybook credentialsId: 'ansible', disableHostKeyChecking: true, installation: 'myansible', inventory: 'dev.inv', playbook: 'PlaybookInstall.yml'
+                ansiblePlaybook credentialsId: 'ansible', disableHostKeyChecking: true, installation: 'myansible', inventory: 'dev.inv', playbook: 'maven-docker.yml'
             }
         }
         
@@ -19,7 +19,7 @@ pipeline{
     {
         
         steps{
-            ansiblePlaybook credentialsId: 'ansible', disableHostKeyChecking: true, installation: 'myansible', inventory: 'dev.inv', playbook: 'PlaybookDeployment.yml'
+            ansiblePlaybook credentialsId: 'ansible', disableHostKeyChecking: true, installation: 'myansible', inventory: 'dev.inv', playbook: 'deploy.yml'
         }
         
         }
