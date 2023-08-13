@@ -1,14 +1,11 @@
 ---
 - hosts: buildserver
-  become: true
+  vars:
+  - warName: java-example-0.0.1-SNAPSHOT.war
+  - tomcat_version: 8.5.53
+  - warRemotePath: /opt/apache-tomcat-{{ tomcat_version }}/webapps
+
   tasks:
-  - name: Clone git repo
-    git: repo=https://github.com/Sunilo7/SL-CMAT-CEP1-Jenkins-Ansible.git dest=/tmp/myrepo
-  - name: Build the code
-    command: chdir=/tmp/myrepo mvn package
-  - name: Copy the war file in current directory
-    copy: src=/tmp/myrepo/target/addressbook.war dest=/tmp/myrepo remote_src=yes
-  - name: build the dockerfile into an Image
-    command: chdir=/tmp/myrepo docker build -t myimage:ansible .
-  - name: run the image
-    command: docker run -d -P myimage:ansible
+  - name: Copy WAR to Remote server
+    copy: src=target/{{ warName }} dest={{ warRemotePath }}/{{ warName }} owner=tomcat group=tomcat
+
